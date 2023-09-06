@@ -53,7 +53,6 @@ php -m | grep swoole
 echo "<-------------------Installing Composer------------------->"
 cd /tmp
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
@@ -99,7 +98,7 @@ if [ "$DB_CONNECTION" == "mysql" ]; then
   sudo apt-cache policy mysql-server
   sudo apt install mysql-server -y
   apt-cache policy mysql-server
-  sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'Jamal@321!';"
+  sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'Kai_Yousuf_Omair_Mosab@321!';"
   echo "Mysql Secure Installing"
   sudo mysql_secure_installation
   echo "Enable auto-start"
@@ -156,7 +155,7 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo bash -c "cat <<EOF >/etc/nginx/sites-available/${APP_DOMAIN}
 server {
     listen 80;
-    server_name ${APP_DOMAIN};
+    server_name ${APP_DOMAIN} www.${APP_DOMAIN};
     root ${APP_PARENT_DIR}/${APP_ID}/public;
     index index.html index.htm index.php;
     error_page 404 /index.php;
